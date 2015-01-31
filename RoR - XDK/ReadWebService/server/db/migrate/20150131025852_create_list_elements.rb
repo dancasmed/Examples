@@ -4,7 +4,7 @@ class CreateListElements < ActiveRecord::Migration
       t.string :name
       t.text :description
 
-      t.timestamps null: false
+      t.timestamps
     end
   end
 end
