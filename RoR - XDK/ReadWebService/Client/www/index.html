@@ -16,28 +16,38 @@
     <script type="application/javascript" src="js/init-app.js"></script>
     <script type="application/javascript" src="xdk/init-dev.js"></script>
     <script type="application/javascript" src="js/index_user_scripts.js"></script>
+    <script type="application/javascript" src="xdk/ad/bs_subpage.js"></script>
   </head>
 
   <body>
     <div class="upage" id="mainpage">
       <div class="upage-outer">
-        <div class="upage-content content-area vertical-col left">
-          <div class="list-group widget uib_w_3 d-margins" data-uib="twitter%20bootstrap/list_group" data-ver="1" id="myList">
-            <a class="list-group-item allow-badge widget uib_w_4 d-margins" data-uib="twitter%20bootstrap/list_item" data-ver="1">
-              <h4 class="list-group-item-heading">Heading</h4>
-              <p class="list-group-item-text">List item</p>
-            </a>
+        <div class="uib-grid widget uib_w_8 grid-text grid-height d-margins" data-uib="layout/grid" data-ver="0" id="main_grid">
+          <div class="uib-grid-row">
+            <div class="uib-grid-cell widget-container">
+              <div class="list-group widget uib_w_9 d-margins" data-uib="twitter%20bootstrap/list_group" data-ver="1" id="ui_myList">
+                <a class="list-group-item allow-badge widget uib_w_10" data-uib="twitter%20bootstrap/list_item" data-ver="1">
+
+                  <p class="list-group-item-text">Empty</p>
+                  <h4 class="list-group-item-heading">Please refresh data</h4>
+                </a>
+
+              </div>
+            </div>
+
           </div>
+
         </div>
         <div class="uib-footer uib-footer-fixed footer-bg container-group inner-element uib_w_1" data-uib="layout/footer" data-ver="0">
           <h2></h2>
           <div class="widget-container wrapping-col single-centered">
             <button class="btn widget uib_w_7 d-margins btn-default" data-uib="twitter%20bootstrap/button" data-ver="1" id="btn_Refresh"><i class="glyphicon glyphicon-refresh button-icon-top" data-position="top"></i>Refresh data</button>
           </div>
-          <div class="widget-container content-area horiz-area wrapping-col left"></div>
+
           <div class="widget-container content-area horiz-area wrapping-col right"></div>
         </div>
       </div>
+      <div id="uib_page_1" class="upage-content vertical-col left hidden"></div>
     </div>
   </body>
 
