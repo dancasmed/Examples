@@ -1,0 +1,8 @@
+C:\Users\Bob\Desktop\Examples\C Sharp\MP3BatchMetadataChange\MP3BatchMetadataChange\bin\Debug\MP3BatchMetadataChange.exe
+C:\Users\Bob\Desktop\Examples\C Sharp\MP3BatchMetadataChange\MP3BatchMetadataChange\bin\Debug\MP3BatchMetadataChange.pdb
+C:\Users\Bob\Desktop\Examples\C Sharp\MP3BatchMetadataChange\MP3BatchMetadataChange\bin\Debug\policy.2.0.taglib-sharp.dll
+C:\Users\Bob\Desktop\Examples\C Sharp\MP3BatchMetadataChange\MP3BatchMetadataChange\bin\Debug\taglib-sharp.dll
+C:\Users\Bob\Desktop\Examples\C Sharp\MP3BatchMetadataChange\MP3BatchMetadataChange\bin\Debug\policy.2.0.taglib-sharp.config
+C:\Users\Bob\Desktop\Examples\C Sharp\MP3BatchMetadataChange\MP3BatchMetadataChange\obj\x86\Debug\MP3BatchMetadataChange.csprojResolveAssemblyReference.cache
+C:\Users\Bob\Desktop\Examples\C Sharp\MP3BatchMetadataChange\MP3BatchMetadataChange\obj\x86\Debug\MP3BatchMetadataChange.exe
+C:\Users\Bob\Desktop\Examples\C Sharp\MP3BatchMetadataChange\MP3BatchMetadataChange\obj\x86\Debug\MP3BatchMetadataChange.pdb
