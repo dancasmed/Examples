@@ -1,0 +1,87 @@
+#Create the rails project
+rails new DeviseLoginJSON
+
+#Install Devise
+IMPORTANT: (Jan/2015) This must be the las part because I don't know why
+			Ruby generates the scaffold controls without JSON after install Devise
+		   (Jan/2015) To fix this add "config.app_generators.scaffold_controller :scaffold_controller" 	to the file /config/application.rb
+
+//Add to file /Gemfile
+	gem 'devise', '3.2.3'
+	gem 'simple_token_authentication', '1.2.0'
+
+//Run in console 
+bundle install
+
+
+//After install the gem run in console
+rails generate devise:install
+
+//Add before end to the file config/environments/development.rb
+	config.action_mailer.default_url_options = { :host => 'localhost:3000' }
+
+//In app/views/layouts/application.html.erb add above <%=yield%=>
+	<% if notice %>
+		<p class="alert alert-success"><%= notice %></p>
+	<% end %>
+	<% if alert %>
+		<p class="alert alert-danger"><%= alert %></p>
+	<% end %>
+
+//Run in console
+rails generate devise user
+
+////Changes to use AuthenticationToken
+///////////////////////////////////////
+
+//In the files app/controllers/application_controller.rb
+//Add the line
+	acts_as_token_authentication_handler_for User
+//Comment the line
+	protect_from_forgery with: :exception
+//Add the line
+	protect_from_forgery with: :null_session, :if => Proc.new { |c| c.request.format == 'application/json' }
+
+//In the file config/initializers/devise.rb
+//Add the line
+	config.navigational_formats = ["/", :json]
+
+//In the file config/routes.rb
+//Comment the line
+	devise_for :users 	
+//Add the line
+	devise_for :users, :controllers => {:registrations => "registrations", :sessions => "sessions"}
+
+//Run in console
+rails generate migration add_authentication_token_to_users authentication_token:string:index
+rake db:migrate
+
+//Generate the controllers for Session and registrations
+//copy the files
+
+//In the file app/models/user.rb
+//Comment the lines
+	devise :database_authenticatable, :registerable,
+    :recoverable, :rememberable, :trackable, :validatable
+ //Add the lines
+ 	acts_as_token_authenticatable
+    devise :database_authenticatable, :registerable
+
+//Testing JSON and Devise
+
+//Create User
+//Run in console
+	curl -H "Content-Type: application/json" -d '{"user":{"email":"usuario1@kratos.org.mx","password":"12345678"}}' -X POST http://localhost:3000/users.json
+
+//Login, get authentication token
+	curl -H 'Content-Type: application/json'   -H 'Accept: application/json' -X POST http://localhost:3000/users/sign_in   -d '{"user": {"email": "usuario1@kratos.org.mx", "password": "12345678"}}'
+//This will used to test the logout
+
+export EMAIL=usuario1@kratos.org.mx
+export TOKEN=TOKEN RETURNED
+export ROOT_URL=http://localhost:3000
+
+curl -i -H "Accept: application/json" -H "Content-type: application/json"  -H "X-User-Email: $EMAIL" -H "X-User-Token: $TOKEN" -X GET $ROOT_URL/elections.json
+
+curl -i -H "Accept: application/json" -H "Content-type: application/json" -H "X-User-Email: $EMAIL" -H "X-User-Token: $TOKEN" -X DELETE $ROOT_URL/users/sign_out
+
