@@ -1,0 +1,11 @@
+c:\users\bob\documents\visual studio 2013\Projects\Anndrea\Brain\obj\Debug\Brain.Vision_Full_Form.resources
+c:\users\bob\documents\visual studio 2013\Projects\Anndrea\Brain\obj\Debug\Brain.csproj.GenerateResource.Cache
+c:\users\bob\documents\visual studio 2013\Projects\Anndrea\Brain\bin\Brain.dll
+c:\users\bob\documents\visual studio 2013\Projects\Anndrea\Brain\bin\Brain.pdb
+c:\users\bob\documents\visual studio 2013\Projects\Anndrea\Brain\bin\Emgu.CV.dll
+c:\users\bob\documents\visual studio 2013\Projects\Anndrea\Brain\bin\Emgu.CV.UI.dll
+c:\users\bob\documents\visual studio 2013\Projects\Anndrea\Brain\bin\Emgu.Util.dll
+c:\users\bob\documents\visual studio 2013\Projects\Anndrea\Brain\obj\Debug\Brain.dll
+c:\users\bob\documents\visual studio 2013\Projects\Anndrea\Brain\obj\Debug\Brain.pdb
+c:\users\bob\documents\visual studio 2013\Projects\Anndrea\Brain\obj\Debug\Brain.csprojResolveAssemblyReference.cache
+c:\users\bob\documents\visual studio 2013\Projects\Anndrea\Brain\obj\Debug\Brain.Vision_Person_Name_Form.resources

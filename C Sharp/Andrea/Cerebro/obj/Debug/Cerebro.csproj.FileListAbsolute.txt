@@ -1,7 +1,0 @@
-c:\users\bob\documents\visual studio 2013\Projects\Andrea\Bin\Cerebro.dll
-c:\users\bob\documents\visual studio 2013\Projects\Andrea\Bin\Cerebro.pdb
-c:\users\bob\documents\visual studio 2013\Projects\Andrea\Cerebro\obj\Debug\Cerebro.dll
-c:\users\bob\documents\visual studio 2013\Projects\Andrea\Cerebro\obj\Debug\Cerebro.pdb
-c:\users\bob\documents\visual studio 2013\Projects\Andrea\Cerebro\obj\Debug\Cerebro.csprojResolveAssemblyReference.cache
-C:\Users\Bob\Documents\Visual Studio 2013\Projects\Andrea\Cerebro\obj\Debug\Cerebro.Vision_Full_Form.resources
-C:\Users\Bob\Documents\Visual Studio 2013\Projects\Andrea\Cerebro\obj\Debug\Cerebro.csproj.GenerateResource.Cache
