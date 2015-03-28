@@ -9,3 +9,15 @@ c:\users\bob\documents\visual studio 2013\Projects\Anndrea\Brain\obj\Debug\Brain
 c:\users\bob\documents\visual studio 2013\Projects\Anndrea\Brain\obj\Debug\Brain.pdb
 c:\users\bob\documents\visual studio 2013\Projects\Anndrea\Brain\obj\Debug\Brain.csprojResolveAssemblyReference.cache
 c:\users\bob\documents\visual studio 2013\Projects\Anndrea\Brain\obj\Debug\Brain.Vision_Person_Name_Form.resources
+C:\Users\Bob\Desktop\Examples\C Sharp\Andrea\Brain\bin\Brain.dll
+C:\Users\Bob\Desktop\Examples\C Sharp\Andrea\Brain\bin\Brain.pdb
+C:\Users\Bob\Desktop\Examples\C Sharp\Andrea\Brain\bin\Emgu.CV.dll
+C:\Users\Bob\Desktop\Examples\C Sharp\Andrea\Brain\bin\Emgu.CV.UI.dll
+C:\Users\Bob\Desktop\Examples\C Sharp\Andrea\Brain\bin\Emgu.Util.dll
+C:\Users\Bob\Desktop\Examples\C Sharp\Andrea\Brain\obj\Debug\Brain.csprojResolveAssemblyReference.cache
+C:\Users\Bob\Desktop\Examples\C Sharp\Andrea\Brain\obj\Debug\Brain.dll
+C:\Users\Bob\Desktop\Examples\C Sharp\Andrea\Brain\obj\Debug\Brain.pdb
+C:\Users\Bob\Desktop\Examples\C Sharp\Andrea\Brain\bin\Anndrea_Interfaces.dll
+C:\Users\Bob\Desktop\Examples\C Sharp\Andrea\Brain\bin\Anndrea_Interfaces.pdb
+C:\Users\Bob\Desktop\Examples\C Sharp\Andrea\Brain\bin\Vision.dll
+C:\Users\Bob\Desktop\Examples\C Sharp\Andrea\Brain\bin\Vision.pdb

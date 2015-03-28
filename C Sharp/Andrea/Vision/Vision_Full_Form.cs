@@ -13,7 +13,7 @@ using Emgu.CV.Structure;
 using Emgu.CV.CvEnum;
 
 
-namespace Brain
+namespace Vision
 {
     public partial class Vision_Full_Form : Form
     {
@@ -57,7 +57,7 @@ namespace Brain
 
         private void Vision_Full_Form_FormClosed(object sender, FormClosedEventArgs e)
         {
-            Brain.show_vision = false;
+            Sense.Get_Sense().m_Vision.Show_Vision(false);
         }
 
     }

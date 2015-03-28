@@ -8,7 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace Brain
+namespace Vision
 {
     public partial class Vision_Person_Name_Form : Form
     {
@@ -17,14 +17,14 @@ namespace Brain
         {
             index = ind;
             InitializeComponent();
-            textBox_Name.Text = Brain.vision.recognized_people[index];
-            imageBox_Picture.Image = Brain.vision.recognized_faces[index];
+            textBox_Name.Text = Sense.Get_Sense().m_Vision.recognized_people[index];
+            imageBox_Picture.Image = Sense.Get_Sense().m_Vision.recognized_faces[index];
         }
 
         private void button_Save_Click(object sender, EventArgs e)
         {
-            Brain.vision.recognized_people[index] = textBox_Name.Text;
-            Brain.vision.Save_Data();
+            Sense.Get_Sense().m_Vision.recognized_people[index] = textBox_Name.Text;
+            Sense.Get_Sense().m_Vision.Save_Data();
             Close();
         }
     }

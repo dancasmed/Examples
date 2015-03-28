@@ -30,7 +30,7 @@
         {
             this.tableLayoutPanel_Main = new System.Windows.Forms.TableLayoutPanel();
             this.textBox_Input = new System.Windows.Forms.TextBox();
-            this.textBox_Output = new System.Windows.Forms.TextBox();
+            this.textBox_Output = new System.Windows.Forms.RichTextBox();
             this.tableLayoutPanel_Main.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -61,17 +61,14 @@
             // textBox_Output
             // 
             this.textBox_Output.BackColor = System.Drawing.Color.Black;
-            this.textBox_Output.CausesValidation = false;
             this.textBox_Output.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.textBox_Output.ForeColor = System.Drawing.Color.Gainsboro;
+            this.textBox_Output.ForeColor = System.Drawing.Color.WhiteSmoke;
             this.textBox_Output.Location = new System.Drawing.Point(3, 3);
-            this.textBox_Output.Multiline = true;
             this.textBox_Output.Name = "textBox_Output";
             this.textBox_Output.ReadOnly = true;
-            this.textBox_Output.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.textBox_Output.Size = new System.Drawing.Size(822, 335);
-            this.textBox_Output.TabIndex = 0;
-            this.textBox_Output.TabStop = false;
+            this.textBox_Output.TabIndex = 2;
+            this.textBox_Output.Text = "";
             // 
             // Form_Terminal
             // 
@@ -81,6 +78,7 @@
             this.Controls.Add(this.tableLayoutPanel_Main);
             this.Name = "Form_Terminal";
             this.Text = "Artificial Neural Network Dynamicly Redesigned (Entidad Artificial)";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.Form_Terminal_FormClosed);
             this.tableLayoutPanel_Main.ResumeLayout(false);
             this.tableLayoutPanel_Main.PerformLayout();
             this.ResumeLayout(false);
@@ -91,7 +89,7 @@
 
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel_Main;
         private System.Windows.Forms.TextBox textBox_Input;
-        private System.Windows.Forms.TextBox textBox_Output;
+        private System.Windows.Forms.RichTextBox textBox_Output;
     }
 }
 

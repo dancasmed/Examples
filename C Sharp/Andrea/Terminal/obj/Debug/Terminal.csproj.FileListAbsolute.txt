@@ -11,3 +11,9 @@ c:\users\bob\documents\visual studio 2013\Projects\Anndrea\Terminal\obj\Debug\Te
 C:\Users\Bob\Desktop\Examples\C Sharp\Andrea\Bin\Terminal.exe.config
 C:\Users\Bob\Desktop\Examples\C Sharp\Andrea\Terminal\obj\Debug\Terminal.exe
 C:\Users\Bob\Desktop\Examples\C Sharp\Andrea\Terminal\obj\Debug\Terminal.pdb
+C:\Users\Bob\Desktop\Examples\C Sharp\Andrea\Bin\Terminal.exe
+C:\Users\Bob\Desktop\Examples\C Sharp\Andrea\Bin\Terminal.pdb
+C:\Users\Bob\Desktop\Examples\C Sharp\Andrea\Terminal\obj\Debug\Terminal.csprojResolveAssemblyReference.cache
+C:\Users\Bob\Desktop\Examples\C Sharp\Andrea\Terminal\obj\Debug\Terminal.Form_Terminal.resources
+C:\Users\Bob\Desktop\Examples\C Sharp\Andrea\Terminal\obj\Debug\Terminal.Properties.Resources.resources
+C:\Users\Bob\Desktop\Examples\C Sharp\Andrea\Terminal\obj\Debug\Terminal.csproj.GenerateResource.Cache

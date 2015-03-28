@@ -1,4 +1,4 @@
-﻿namespace Brain
+﻿namespace Vision
 {
     partial class Vision_Full_Form
     {

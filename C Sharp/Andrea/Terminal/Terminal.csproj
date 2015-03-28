@@ -52,6 +52,7 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Term.cs" />
     <EmbeddedResource Include="Form_Terminal.resx">
       <DependentUpon>Form_Terminal.cs</DependentUpon>
     </EmbeddedResource>
@@ -81,9 +82,13 @@
     <WCFMetadata Include="Service References\" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Brain\Brain.csproj">
-      <Project>{c9bb274e-6d20-4a0d-8669-911f0d5dfa22}</Project>
-      <Name>Brain</Name>
+    <ProjectReference Include="..\Anndrea\Anndrea.csproj">
+      <Project>{12f1e70a-7a88-4bd1-8f75-267247a04b30}</Project>
+      <Name>Anndrea</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Anndrea_Interfaces\Anndrea_Interfaces.csproj">
+      <Project>{7bf8bc45-341c-4e0f-8763-dabfddf6a23b}</Project>
+      <Name>Anndrea_Interfaces</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

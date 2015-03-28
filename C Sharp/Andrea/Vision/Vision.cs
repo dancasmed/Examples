@@ -9,29 +9,32 @@ using Emgu.CV.CvEnum;
 using System.Windows.Forms;
 using System.Drawing;
 using System.IO;
+using Anndrea_Interfaces;
 
-namespace Brain
+namespace Vision
 {
     internal class Vision
     {
+        
         internal int detected_people = 0;
         internal List<string> recognized_people;
         internal List<Image<Gray, byte>> recognized_faces;
         internal List<Rectangle> last_positions;
+        internal List<DateTime> last_detection_time;
         internal List<Image<Gray, byte>> detected_faces;
         internal List<bool> recognized_flags;
 
         Vision_Full_Form form_vision = null;
         Image<Bgr, Byte> current_frame;
-        Capture grabber;
+        Capture grabber = null;
         HaarCascade frontal_face_pattern;
-       
+
         MCvFont font = new MCvFont(FONT.CV_FONT_HERSHEY_TRIPLEX, 0.5d, 0.5d);
         Image<Gray, byte> result;
         Image<Gray, byte> gray = null;
         List<Image<Gray, byte>> training_images = new List<Image<Gray, byte>>();
         List<string> face_labels = new List<string>();
-        
+
         int ContTrain, NumLabels;
         string name;
 
@@ -41,29 +44,44 @@ namespace Brain
         EigenObjectRecognizer recognizer;
         MCvTermCriteria termCrit;
 
-        internal Vision()
+        EventHandler m_Idle_Handler;
+
+        ITerminal m_Terminal;
+
+        internal Vision(ITerminal terminal)
         {
             recognized_people = new List<string>();
             recognized_faces = new List<Image<Gray, byte>>();
             detected_faces = new List<Image<Gray, byte>>();
             last_positions = new List<Rectangle>();
             recognized_flags = new List<bool>();
+            last_detection_time = new List<DateTime>();
 
             //TermCriteria for face recognition with numbers of trained images like maxIteration
             termCrit = new MCvTermCriteria(ContTrain, 0.001);
 
-             
+            m_Terminal = terminal;
         }
 
-
-        internal void Iniciar()
+        internal void Stop()
         {
-            
+            if (grabber != null)
+            {
+                Application.Idle -= m_Idle_Handler;
+                grabber.Dispose();
+                grabber = null;
+            }
+        }
+
+        internal void Start()
+        {
+
             //Initialize the capture device
             grabber = new Capture();
             grabber.QueryFrame();
             //Initialize the FrameGraber event
-            Application.Idle += new EventHandler(FrameGrabber);
+            m_Idle_Handler = new EventHandler(FrameGrabber);
+            Application.Idle += m_Idle_Handler;
 
             //Load haarcascades for face detection
             frontal_face_pattern = new HaarCascade("haarcascade_frontalface_default.xml");
@@ -95,7 +113,7 @@ namespace Brain
                 MessageBox.Show("Nothing in binary database, please add at least a face(Simply train the prototype with the Add Face Button).", "Triained faces load", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
             }
 
-            Brain.terminal.println("INFO: Vision started.");
+            m_Terminal.Express("Vision started.", Expression_Types.Information);
         }
 
         void FrameGrabber(object sender, EventArgs e)
@@ -118,11 +136,11 @@ namespace Brain
                 detected_people = facesDetected[0].Length;
                 if (detected_people != 0)
                 {
-                    Brain.terminal.println("VISION: " +detected_people + " people detected.");
+                    m_Terminal.Express(detected_people + " people detected.",Expression_Types.Information);
                 }
             }
             //Action for each element detected
-            
+
             foreach (MCvAvgComp f in facesDetected[0])
             {
 
@@ -130,22 +148,22 @@ namespace Brain
             }
 
             //If We dont detect faces we try to track them using their lst positions
-            for (int i = 0; i < last_positions.Count; i++ )
+            for (int i = 0; i < last_positions.Count; i++)
             {
-                if(recognized_flags[i]==false)
+                if (recognized_flags[i] == false)
                 {
                     //Need to improve performance on Track
                     //Track(last_positions[i],i);
                 }
             }
 
-                if (form_vision != null)
-                {
-                    form_vision.Set_Current_Frame(current_frame);
-                    form_vision.Set_Faces(detected_faces);
-                }
-            
-          
+            if (form_vision != null)
+            {
+                form_vision.Set_Current_Frame(current_frame);
+                form_vision.Set_Faces(detected_faces);
+            }
+
+
             detected_faces.Clear();
             for (int i = 0; i < recognized_flags.Count; i++)
                 recognized_flags[i] = false;
@@ -190,13 +208,13 @@ namespace Brain
                     recognized_faces.Add(result);
                     last_positions.Add(f.rect);
                     recognized_flags.Add(true);
-                    Brain.terminal.println("VISION: Person recognized: " + name);
+                    m_Terminal.Express("Person recognized: " + name, Expression_Types.Information);
                 }
                 else
                 {
                     int index = recognized_people.IndexOf(name);
                     recognized_faces[index] = result;
-                   
+                   // Vision.voice.Speak("Hi " + name + "!, good to see you again.");
                     recognized_flags[index] = true;
                 }
                 detected_faces.Add(result);
@@ -220,7 +238,7 @@ namespace Brain
                         face_labels.Add(name);
                         recognized_people.Add(name);
                         Save_Data();
-                       
+
                     }
                 }
 
@@ -232,11 +250,11 @@ namespace Brain
                 face_labels.Add("Unknown");
                 recognized_people.Add("Unknown");
                 Save_Data();
-                
+
             }
             if (unknown_people > 0)
             {
-                Brain.terminal.println("VISION: "+unknown_people + " unknown people detected.");
+                m_Terminal.Express(unknown_people + " unknown people detected.",Expression_Types.Information);
             }
         }
 
@@ -260,7 +278,7 @@ namespace Brain
             Image<Gray, byte> pos_4 = current_frame.Copy(tmp).Convert<Gray, byte>().Resize(100, 100, Emgu.CV.CvEnum.INTER.CV_INTER_CUBIC);
 
 
-            
+
 
 
             if (training_images.ToArray().Length != 0)
@@ -280,7 +298,7 @@ namespace Brain
                 }
 
                 distances = recognizer.GetEigenDistances(pos_2);
-                
+
                 if (distances.Length > 0)
                 {
                     foreach (float distance in distances)
@@ -294,7 +312,7 @@ namespace Brain
                 }
 
                 distances = recognizer.GetEigenDistances(pos_3);
-                
+
                 if (distances.Length > 0)
                 {
                     foreach (float distance in distances)
@@ -308,7 +326,7 @@ namespace Brain
                 }
 
                 distances = recognizer.GetEigenDistances(pos_4);
-                
+
                 if (distances.Length > 0)
                 {
                     foreach (float distance in distances)
@@ -323,7 +341,7 @@ namespace Brain
 
                 if (min_distance < 1400)
                 {
-                    
+
                     switch (closest_position)
                     {
                         case 1:
@@ -350,7 +368,7 @@ namespace Brain
                         face_labels.Add(name);
                         recognized_people.Add(name);
                         Save_Data();
-                        
+
                     }
                 }
 
@@ -358,7 +376,7 @@ namespace Brain
             }
             if (unknown_people > 0)
             {
-                Brain.terminal.println("VISION: " + unknown_people + " unknown people detected.");
+                m_Terminal.Express(unknown_people + " unknown people detected.", Expression_Types.Information);
             }
         }
 
@@ -385,6 +403,6 @@ namespace Brain
                 form_vision = null;
             }
         }
+        
     }
 }
-    
